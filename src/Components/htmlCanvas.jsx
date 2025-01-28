@@ -47,6 +47,11 @@ float noise(vec3 p){
 
     return o4.y * d.y + o4.x * (1.0 - d.y);
 }
+
+float map(float value, float min1, float max1, float min2, float max2) {
+  return min2 + (value - min1) * (max2 - min2) / (max1 - min1);
+}
+
     
     void main() {
       float freq = 1.0;
@@ -59,22 +64,27 @@ float noise(vec3 p){
       float xDist = x + amp * sin(y * freq + time);
       float yDist = y + amp * cos(x * freq + time);
 
-      float grad = (1.0 - linearGradient(gl_FragCoord.y,  14.0));
+      float grad = (1.0 - linearGradient(gl_FragCoord.y,  56.0));
       vec2 pos = vec2(gl_FragCoord.x, gl_FragCoord.y * 5.0);
-      float n1 = noise(vec3(gl_FragCoord.xy * 0.3 + vec2(0.0, time), time * 0.1));
-      float n2 = noise(vec3(gl_FragCoord.xy * 0.15 + vec2(0.0, time), time * 0.1));
+      float n1 = noise(vec3(gl_FragCoord.xy * 0.2 + vec2(0.0, time), time * 0.1));
+      float n2 = noise(vec3(gl_FragCoord.xy * 0.1 + vec2(0.0, time), time * 0.1));
       float n3 = noise(vec3(gl_FragCoord.xy * 0.075 + vec2(0.0, time), time * 0.1));
 
 
       float fire = (n1 + n2 + n3) / 3.0;
-      float color = (fire + (grad + cos(gl_FragCoord.x * 0.022 - 1.4))/2.0);
 
-    color = color * step(0.8, color);
+      //float gradient2 = sin(map(gl_FragCoord.x + 15.0, 0.0, 280.0, 0.0, 1.0) * 3.14159);
+      
+      float color = (fire + grad);
+
+    color = color * step(0.6, color);
 
 
       if(color > 0.1){
-      gl_FragColor = vec4(1.0, 1.0 - (color + grad)/2.0, 0.0, color);
-      } else { gl_FragColor = vec4(0.208, 0.208, 0.208, 1.0); }
+      vec4 color = mix( vec4(1.0, 0.271, 0.0, 1.0), vec4(1.0, 0.271, 0.0, 1.0), color * 1.35);
+      //gl_FragColor = vec4(1.0, 1.0 - (color + grad)/2.0, 0.0, color);
+      gl_FragColor = color;
+      } else { gl_FragColor = vec4(0.153, 0.153, 0.153, color); }
 
       
 
@@ -166,8 +176,8 @@ float noise(vec3 p){
 
   return (
     <div style={{ margin: "0", padding: "0" }}>
-      <canvas ref={canvasRef} id="myCanvas" width='128px' height="72px" style={{ position: "absolute", width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated", margin: "0" }}></canvas>
-    </div>
+      <canvas ref={canvasRef} id="myCanvas" width={128 * 2} height={72 * 2} style={{ position: "fixed", width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated", margin: "0", zIndex: 100, backgroundColor: "none" }}></canvas>
+    </div >
   );
 };
 
