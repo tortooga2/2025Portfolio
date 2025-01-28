@@ -84,7 +84,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
       vec4 color = mix( vec4(1.0, 0.271, 0.0, 1.0), vec4(1.0, 0.271, 0.0, 1.0), color * 1.35);
       //gl_FragColor = vec4(1.0, 1.0 - (color + grad)/2.0, 0.0, color);
       gl_FragColor = color;
-      } else { gl_FragColor = vec4(0.153, 0.153, 0.153, color); }
+      } else { gl_FragColor = vec4(0.153, 0.153, 0.153, 0.0); }
 
       
 
