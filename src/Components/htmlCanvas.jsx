@@ -72,8 +72,9 @@ float noise(vec3 p){
     color = color * step(0.8, color);
 
 
-
+      if(color > 0.1){
       gl_FragColor = vec4(1.0, 1.0 - (color + grad)/2.0, 0.0, color);
+      } else { gl_FragColor = vec4(0.208, 0.208, 0.208, 1.0); }
 
       
 
