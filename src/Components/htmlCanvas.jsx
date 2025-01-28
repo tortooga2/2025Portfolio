@@ -59,7 +59,7 @@ float noise(vec3 p){
       float xDist = x + amp * sin(y * freq + time);
       float yDist = y + amp * cos(x * freq + time);
 
-      float grad = (1.0 - linearGradient(gl_FragCoord.y,  37.0));
+      float grad = (1.0 - linearGradient(gl_FragCoord.y,  14.0));
       vec2 pos = vec2(gl_FragCoord.x, gl_FragCoord.y * 5.0);
       float n1 = noise(vec3(gl_FragCoord.xy * 0.3 + vec2(0.0, time), time * 0.1));
       float n2 = noise(vec3(gl_FragCoord.xy * 0.15 + vec2(0.0, time), time * 0.1));
