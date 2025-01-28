@@ -45,8 +45,8 @@ const Header = () => {
       <h1 ref={titleRef} className="Title" style={titleStyle}>Chase Nagle</h1>
 
       <div className="Nav" style={navStyle}>
-        <NavItem name="projects" color="black" bg_color="#AAABBC" />
-        <NavItem name="linkedIn" color="black" bg_color="#6C91C2" onClick={() => { window.open("https://www.linkedin.com/in/chase-nagle-7069a6212/", "_blank") }} />
+        <NavItem name="projects" color="black" bg_color="#E85D75" />
+        <NavItem name="linkedIn" color="black" bg_color="#E85D75" onClick={() => { window.open("https://www.linkedin.com/in/chase-nagle-7069a6212/", "_blank") }} />
 
 
 

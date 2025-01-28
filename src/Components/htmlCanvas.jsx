@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import propTypes from 'prop-types';
 
-const HtmlCanvas = ({ width, height }) => {
+const HtmlCanvas = ({ tipColor, bodyColor }) => {
   const canvasRef = useRef(null);
 
   const vertShader = `
@@ -51,20 +51,15 @@ float noise(vec3 p){
 float map(float value, float min1, float max1, float min2, float max2) {
   return min2 + (value - min1) * (max2 - min2) / (max1 - min1);
 }
-
+    
+    uniform vec3 tipColor;
+    uniform vec3 bodyColor;
+    uniform float yDist;
     
     void main() {
-      float freq = 1.0;
 
-      float amp = 0.5;
 
-      float x = gl_FragCoord.x;
-      float y = gl_FragCoord.y;
-
-      float xDist = x + amp * sin(y * freq + time);
-      float yDist = y + amp * cos(x * freq + time);
-
-      float grad = (1.0 - linearGradient(gl_FragCoord.y,  56.0));
+      float grad = (1.0 - linearGradient(gl_FragCoord.y,  yDist));
       vec2 pos = vec2(gl_FragCoord.x, gl_FragCoord.y * 5.0);
       float n1 = noise(vec3(gl_FragCoord.xy * 0.2 + vec2(0.0, time), time * 0.1));
       float n2 = noise(vec3(gl_FragCoord.xy * 0.1 + vec2(0.0, time), time * 0.1));
@@ -81,7 +76,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
 
       if(color > 0.1){
-      vec4 color = mix( vec4(1.0, 0.271, 0.0, 1.0), vec4(1.0, 0.271, 0.0, 1.0), color * 1.35);
+      vec4 color = mix( vec4(tipColor, 1.0), vec4(bodyColor, 1.0), color * 1.35);
       //gl_FragColor = vec4(1.0, 1.0 - (color + grad)/2.0, 0.0, color);
       gl_FragColor = color;
       } else { gl_FragColor = vec4(0.153, 0.153, 0.153, 0.0); }
@@ -93,6 +88,9 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
 
   const time = useRef(0);
+  const yDist = useRef(1.0);
+  const lastScrollY = useRef(0);
+  const scrollSpeed = useRef(0.0);
 
 
 
@@ -102,6 +100,9 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
 
   useEffect(() => {
+
+
+
     const canvas = canvasRef.current;
     const webGLCavnas = canvas.getContext('webgl');
     webGLCavnas.filter = 'none';
@@ -147,11 +148,19 @@ float map(float value, float min1, float max1, float min2, float max2) {
       webGLCavnas.clearColor(0.0, 0.0, 0.0, 1.0);
       webGLCavnas.clear(webGLCavnas.COLOR_BUFFER_BIT);
       time.current -= 0.02;
+      scrollSpeed.current = window.scrollY - lastScrollY.current;
+      lastScrollY.current = window.scrollY;
+      yDist.current += scrollSpeed.current * 0.5;
+
       webGLCavnas.useProgram(program);
 
       webGLCavnas.enableVertexAttribArray(position);
 
+
       webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'time'), time.current);
+      webGLCavnas.uniform3fv(webGLCavnas.getUniformLocation(program, 'tipColor'), tipColor);
+      webGLCavnas.uniform3fv(webGLCavnas.getUniformLocation(program, 'bodyColor'), bodyColor);
+      webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'yDist'), yDist.current);
 
       webGLCavnas.drawArrays(webGLCavnas.TRIANGLE_FAN, 0, 4);
       requestAnimationFrame(renderLoop);
@@ -176,7 +185,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
   return (
     <div style={{ margin: "0", padding: "0" }}>
-      <canvas ref={canvasRef} id="myCanvas" width={128 * 2} height={72 * 2} style={{ position: "fixed", width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated", margin: "0", zIndex: 100, backgroundColor: "none" }}></canvas>
+      <canvas ref={canvasRef} id="myCanvas" width={128 * 1} height={72 * 1} style={{ position: "fixed", width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated", margin: "0", zIndex: 100, backgroundColor: "none" }}></canvas>
     </div >
   );
 };

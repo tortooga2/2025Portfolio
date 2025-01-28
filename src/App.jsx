@@ -13,8 +13,9 @@ function App() {
     <>
       <Analytics />
       <Header />
-      <h1 style={{ position: "absolute", fontSize: "300px", bottom: "0", left: "0" }}>hello world</h1>
-      <HtmlCanvas width={200} height={100} />
+      <h1 style={{ position: "absolute", fontSize: "200px", bottom: "0", left: "0", color: "#9f8082", backgroundColor: "#E85D75" }}>Chase Nagle. </h1>
+      <HtmlCanvas tipColor={[0.91, 0.365, 0.459]} bodyColor={[.624, 0.502, 0.51]} />
+      <div style={{ height: "300vh", width: "300vw" }}></div>
     </>
   )
 }
