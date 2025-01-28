@@ -151,7 +151,7 @@ float noise(vec3 p){
 
   return (
     <div>
-      <canvas ref={canvasRef} id="myCanvas" width='128px' height="72px" style={{ width: "100vw", height: "100vh", bottom: "0", imageRendering: "pixelated" }}></canvas>
+      <canvas ref={canvasRef} id="myCanvas" width='128px' height="72px" style={{ width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated" }}></canvas>
     </div>
   );
 };
