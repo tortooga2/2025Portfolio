@@ -82,17 +82,20 @@ float noise(vec3 p){
   `;
 
 
-  const [time, setTime] = useState(0);
+  const time = useRef(0);
+
+
+
+
+
+
 
 
   useEffect(() => {
-    setTime(time - 0.008);
     const canvas = canvasRef.current;
     const webGLCavnas = canvas.getContext('webgl');
     webGLCavnas.filter = 'none';
-    webGLCavnas.clearColor(0.0, 0.0, 0.0, 0.0);
 
-    webGLCavnas.clear(webGLCavnas.COLOR_BUFFER_BIT);
 
     const vert = webGLCavnas.createShader(webGLCavnas.VERTEX_SHADER);
     webGLCavnas.shaderSource(vert, vertShader);
@@ -129,20 +132,31 @@ float noise(vec3 p){
     const position = webGLCavnas.getAttribLocation(program, 'position');
     webGLCavnas.vertexAttribPointer(position, 2, webGLCavnas.FLOAT, false, 0, 0);
 
-    webGLCavnas.useProgram(program);
+    const renderLoop = () => {
 
-    webGLCavnas.enableVertexAttribArray(position);
+      webGLCavnas.clearColor(0.0, 0.0, 0.0, 1.0);
+      webGLCavnas.clear(webGLCavnas.COLOR_BUFFER_BIT);
+      time.current -= 0.018;
+      webGLCavnas.useProgram(program);
 
-    webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'time'), time);
+      webGLCavnas.enableVertexAttribArray(position);
 
-    webGLCavnas.drawArrays(webGLCavnas.TRIANGLE_FAN, 0, 4);
+      webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'time'), time.current);
+
+      webGLCavnas.drawArrays(webGLCavnas.TRIANGLE_FAN, 0, 4);
+      requestAnimationFrame(renderLoop);
+    }
+
+    renderLoop();
 
 
 
 
 
 
-  }, [time]);
+
+
+  }, []);
 
 
 
@@ -156,6 +170,10 @@ float noise(vec3 p){
     </div>
   );
 };
+
+
+
+
 
 HtmlCanvas.propTypes = {
   width: propTypes.number,
