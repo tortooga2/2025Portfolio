@@ -136,7 +136,7 @@ float noise(vec3 p){
 
       webGLCavnas.clearColor(0.0, 0.0, 0.0, 1.0);
       webGLCavnas.clear(webGLCavnas.COLOR_BUFFER_BIT);
-      time.current -= 0.018;
+      time.current -= 0.02;
       webGLCavnas.useProgram(program);
 
       webGLCavnas.enableVertexAttribArray(position);
