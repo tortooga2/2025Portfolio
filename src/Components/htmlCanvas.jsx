@@ -150,7 +150,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
       time.current -= 0.02;
       scrollSpeed.current = window.scrollY - lastScrollY.current;
       lastScrollY.current = window.scrollY;
-      yDist.current += scrollSpeed.current * 0.5;
+      yDist.current += scrollSpeed.current * 0.1;
 
       webGLCavnas.useProgram(program);
 
