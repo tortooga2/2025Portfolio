@@ -13,11 +13,17 @@ const NavItem = ({ name, color, bg_color, onClick }) => {
     paddingLeft: '3px',
     paddingRight: '3px',
     transition: '0.3s ease',
+    color: "white",
+    cursor: "pointer",
+    filter: 'invert(100%)',
+    mixBlendMode: 'difference',
+
+
+
   });
 
   const [navTextStyle, setNavTextStyle] = useState({
-    fontSize: '1em',
-    mixBlendMode: 'difference',
+
   });
 
   const [underlineStyle, setUnderlineStyle] = useState({
@@ -27,9 +33,11 @@ const NavItem = ({ name, color, bg_color, onClick }) => {
     width: '100%',
     height: '0px',
     backgroundColor: bgColor,
-    borderRadius: '5px',
+    filter: 'invert(100%)',
+    mixBlendMode: 'difference',
     transition: '0.3s ease',
     zIndex: '-1',
+
 
   });
 

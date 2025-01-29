@@ -14,8 +14,7 @@ const HtmlCanvas = ({ tipColor, bodyColor }) => {
 
   const fragShader = `
     precision mediump float;
-
-
+    
     uniform float time;
 
     float linearGradient(float y, float height) {
@@ -72,6 +71,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
       
       float color = (fire + grad);
 
+
     color = color * step(0.6, color);
 
 
@@ -79,7 +79,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
       vec4 color = mix( vec4(tipColor, 1.0), vec4(bodyColor, 1.0), color * 1.35);
       //gl_FragColor = vec4(1.0, 1.0 - (color + grad)/2.0, 0.0, color);
       gl_FragColor = color;
-      } else { gl_FragColor = vec4(0.153, 0.153, 0.153, 0.0); }
+      } else { gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0); }
 
       
 
@@ -88,7 +88,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
 
   const time = useRef(0);
-  const yDist = useRef(1.0);
+  const yDist = useRef(46.0);
   const lastScrollY = useRef(0);
   const scrollSpeed = useRef(0.0);
 
@@ -185,7 +185,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
   return (
     <div style={{ margin: "0", padding: "0" }}>
-      <canvas ref={canvasRef} id="myCanvas" width={128 * 1} height={72 * 1} style={{ position: "fixed", width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated", margin: "0", zIndex: 100, backgroundColor: "none" }}></canvas>
+      <canvas ref={canvasRef} id="myCanvas" width={128 * 1} height={72 * 1} style={{ position: "fixed", width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated", margin: "0", zIndex: "0", }}></canvas>
     </div >
   );
 };
