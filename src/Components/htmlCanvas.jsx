@@ -149,7 +149,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
       startTime.current = performance.now();
       webGLCavnas.clearColor(0.0, 0.0, 0.0, 1.0);
       webGLCavnas.clear(webGLCavnas.COLOR_BUFFER_BIT);
-      time.current -= 6.0 * delta;
+      time.current -= 4.0 * delta;
       scrollSpeed.current = window.scrollY - lastScrollY.current;
       lastScrollY.current = window.scrollY;
       yDist.current += scrollSpeed.current * scrollFactor.current;
