@@ -18,7 +18,7 @@ const Projects = ({ title, desc, timeline }) => {
     flexDirection: "row",
     width: "100%",
     alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
 
 
   });
