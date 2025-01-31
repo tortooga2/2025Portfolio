@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import propTypes from 'prop-types';
 
-const HtmlCanvas = ({ tipColor, bodyColor }) => {
+const HtmlCanvas = ({ tipColor, bodyColor, dist, scroll }) => {
   const canvasRef = useRef(null);
 
   const vertShader = `
@@ -75,11 +75,11 @@ float map(float value, float min1, float max1, float min2, float max2) {
     color = color * step(0.6, color);
 
 
-      if(color > 0.1){
+      if(color > 0.0){
       vec4 color = mix( vec4(tipColor, 1.0), vec4(bodyColor, 1.0), color * 1.35);
       //gl_FragColor = vec4(1.0, 1.0 - (color + grad)/2.0, 0.0, color);
       gl_FragColor = color;
-      } else { gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0); }
+      } else { gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0); }
 
       
 
@@ -88,9 +88,10 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
 
   const time = useRef(0);
-  const yDist = useRef(46.0);
+  const yDist = useRef(dist);
   const lastScrollY = useRef(0);
   const scrollSpeed = useRef(0.0);
+  const scrollFactor = useRef(scroll);
 
 
 
@@ -147,10 +148,10 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
       webGLCavnas.clearColor(0.0, 0.0, 0.0, 1.0);
       webGLCavnas.clear(webGLCavnas.COLOR_BUFFER_BIT);
-      time.current -= 0.02;
+      time.current -= 0.015;
       scrollSpeed.current = window.scrollY - lastScrollY.current;
       lastScrollY.current = window.scrollY;
-      yDist.current += scrollSpeed.current * 0.1;
+      yDist.current += scrollSpeed.current * scrollFactor.current;
 
       webGLCavnas.useProgram(program);
 
@@ -197,6 +198,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
 HtmlCanvas.propTypes = {
   width: propTypes.number,
   height: propTypes.number,
+  dist: propTypes.number,
 };
 
 

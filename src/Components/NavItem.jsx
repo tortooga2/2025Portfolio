@@ -13,10 +13,10 @@ const NavItem = ({ name, color, bg_color, onClick }) => {
     paddingLeft: '3px',
     paddingRight: '3px',
     transition: '0.3s ease',
-    color: "white",
+
     cursor: "pointer",
-    filter: 'invert(100%)',
-    mixBlendMode: 'difference',
+
+
 
 
 
@@ -52,12 +52,14 @@ const NavItem = ({ name, color, bg_color, onClick }) => {
       ...navItemStyle,
       color: color,
     });
+
+
   }
 
 
 
   return (
-    <div className="NavItem" style={navItemStyle} onMouseEnter={Transition("100%", color)} onMouseLeave={Transition("0%", "white")} onClick={onClick}>
+    <div className="NavItem" style={navItemStyle} onMouseEnter={Transition("100%", "white")} onMouseLeave={Transition("0%", "black")} onClick={onClick}>
       <div className="navText">{name}</div>
       <div className="NavItem-Underline" style={underlineStyle}></div>
     </div>

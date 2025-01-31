@@ -11,7 +11,9 @@ const Header = () => {
   const [headerStyle, setHeaderStyle] = useState({
     //backgroundColor: 'black',
     fontFamily: "'AOK Buenos Aires', sans-serif",
-    color: 'white',
+    color: 'black',
+    filter: "invert(100%)",
+    mixBlendMode: 'difference',
     padding: '10px',
     position: 'fixed',
     display: 'flex',
@@ -29,7 +31,6 @@ const Header = () => {
     fontSize: '1em',
     padding: "20px",
     margin: '0',
-    color: 'white',
   });
 
   const [navStyle, setNavStyle] = useState({
@@ -49,6 +50,7 @@ const Header = () => {
       <div className="Nav" style={navStyle}>
         <NavItem name="projects" color="black" bg_color="#FFFFFF" />
         <NavItem name="linkedIn" color="black" bg_color="#FFFFFF" onClick={() => { window.open("https://www.linkedin.com/in/chase-nagle-7069a6212/", "_blank") }} />
+        <NavItem name="github" color="black" bg_color="#FFFFFF" onClick={() => { window.open("https://www.github.com/tortooga2", "_blank") }} />
 
 
 
