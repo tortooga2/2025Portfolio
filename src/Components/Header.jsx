@@ -48,7 +48,11 @@ const Header = () => {
       <h1 ref={titleRef} className="Title" style={titleStyle}>Chase Nagle</h1>
 
       <div className="Nav" style={navStyle}>
-        <NavItem name="projects" color="black" bg_color="#FFFFFF" />
+        <NavItem name="projects" color="black" bg_color="#FFFFFF" onClick={() => {
+          console.log("Scrolling");
+          const el = document.getElementById("Projects");
+          window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' });
+        }} />
         <NavItem name="linkedIn" color="black" bg_color="#FFFFFF" onClick={() => { window.open("https://www.linkedin.com/in/chase-nagle-7069a6212/", "_blank") }} />
         <NavItem name="github" color="black" bg_color="#FFFFFF" onClick={() => { window.open("https://www.github.com/tortooga2", "_blank") }} />
 
