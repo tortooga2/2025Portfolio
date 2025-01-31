@@ -86,7 +86,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
     } 
   `;
 
-
+  const startTime = useRef(performance.now());
   const time = useRef(0);
   const yDist = useRef(dist);
   const lastScrollY = useRef(0);
@@ -144,10 +144,12 @@ float map(float value, float min1, float max1, float min2, float max2) {
     webGLCavnas.vertexAttribPointer(position, 2, webGLCavnas.FLOAT, false, 0, 0);
 
     const renderLoop = () => {
-
+      let delta = performance.now() - startTime.current;
+      delta /= 1000;
+      startTime.current = performance.now();
       webGLCavnas.clearColor(0.0, 0.0, 0.0, 1.0);
       webGLCavnas.clear(webGLCavnas.COLOR_BUFFER_BIT);
-      time.current -= 0.015;
+      time.current -= 6.0 * delta;
       scrollSpeed.current = window.scrollY - lastScrollY.current;
       lastScrollY.current = window.scrollY;
       yDist.current += scrollSpeed.current * scrollFactor.current;
