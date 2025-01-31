@@ -36,9 +36,9 @@ function App() {
 
 
 
-        <HtmlCanvas tipColor={[1.0, 1.0, 1.0]} bodyColor={[0.0, 0.0, 0.0]} dist={45.0} scroll={0.1} />
+        <HtmlCanvas tipColor={[1.0, 0.0, 0.0]} bodyColor={[0.0, 0.0, 0.0]} dist={45.0} scroll={0.1} />
 
-        <HtmlCanvas tipColor={[0.0, 0.0, 0.0]} bodyColor={[1.0, 1.0, 1.0]} dist={0.0} scroll={0.01} />
+        <HtmlCanvas tipColor={[1.0, 0.0, 0.0]} bodyColor={[1.0, 1.0, 1.0]} dist={0.0} scroll={0.01} />
         <div style={{ height: "90vh", width: "100vw" }}></div>
         <h1 style={{ color: "black", filter: "invert(100%)", mixBlendMode: "difference" }}>Projects</h1>
 
