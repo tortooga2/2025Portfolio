@@ -17,6 +17,9 @@ body{
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
+
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .App{

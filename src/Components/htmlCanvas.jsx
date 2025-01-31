@@ -94,8 +94,7 @@ float map(float value, float min1, float max1, float min2, float max2) {
   const scrollFactor = useRef(scroll);
 
 
-
-
+  const [aspectRatio, setAspectRatio] = useState({ x: 128, y: 72 });
 
 
 
@@ -183,10 +182,9 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
 
 
-
   return (
     <div style={{ margin: "0", padding: "0" }}>
-      <canvas ref={canvasRef} id="myCanvas" width={128 * 1} height={72 * 1} style={{ position: "fixed", width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated", margin: "0", zIndex: "0", }}></canvas>
+      <canvas ref={canvasRef} id="myCanvas" width={128} height={128} style={{ position: "fixed", width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated", margin: "0", zIndex: "0", }}></canvas>
     </div >
   );
 };
