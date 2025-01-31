@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import propTypes from 'prop-types';
 
-const HtmlCanvas = ({ tipColor, bodyColor, dist, scroll }) => {
+const HtmlCanvas = ({ tipColor, bodyColor, dist, scroll, zIndex }) => {
   const canvasRef = useRef(null);
 
   const vertShader = `
@@ -160,8 +160,9 @@ float map(float value, float min1, float max1, float min2, float max2) {
       webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'time'), time.current);
       webGLCavnas.uniform3fv(webGLCavnas.getUniformLocation(program, 'tipColor'), tipColor);
       webGLCavnas.uniform3fv(webGLCavnas.getUniformLocation(program, 'bodyColor'), bodyColor);
-      webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'yDist'), yDist.current);
-
+      if (yDist.current > 0.0) { webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'yDist'), yDist.current); } else {
+        webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'yDist'), 0.0);
+      }
       webGLCavnas.drawArrays(webGLCavnas.TRIANGLE_FAN, 0, 4);
       requestAnimationFrame(renderLoop);
     }
@@ -184,8 +185,8 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
   return (
     <div style={{ margin: "0", padding: "0" }}>
-      <canvas ref={canvasRef} id="myCanvas" width={128} height={128} style={{ position: "fixed", width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated", margin: "0", zIndex: "0", }}></canvas>
-    </div >
+      <canvas ref={canvasRef} id="myCanvas" width={128 * 1} height={128 * 1} style={{ pointerEvents: "none", position: "fixed", width: "100vw", height: "100vh", bottom: "0", left: "0", imageRendering: "pixelated", margin: "0", zIndex: `${zIndex}`, }}></canvas>
+    </div>
   );
 };
 
@@ -194,9 +195,11 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
 
 HtmlCanvas.propTypes = {
-  width: propTypes.number,
-  height: propTypes.number,
   dist: propTypes.number,
+  scroll: propTypes.number,
+  tipColor: propTypes.array,
+  bodyColor: propTypes.array,
+  zIndex: propTypes.number
 };
 
 

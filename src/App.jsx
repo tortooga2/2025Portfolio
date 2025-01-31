@@ -27,15 +27,28 @@ function App() {
 
         </div>
 
+
+
+
+
+        <HtmlCanvas tipColor={[1.0, 0.0, 0.0]} bodyColor={[0.0, 0.0, 0.0]} dist={75.0} scroll={0.1} zIndex={0} />
+        <HtmlCanvas tipColor={[1.0, 0.0, 0.0]} bodyColor={[1.0, 1.0, 1.0]} dist={-75.0} scroll={0.1} zIndex={3} />
+
+
+
+        <h1 style={{ color: "black", filter: "invert(100%)", mixBlendMode: "difference", fontSize: "1.5em" }}>Projects</h1>
+        <div className="Projects" style={{ width: "100vw", color: "black", filter: "invert(100%)", mixBlendMode: "difference" }}>
+          <Projects title="Project 1" desc="This is a description of project 1" timeline="2022-2023" />
+          <Projects title="Project 2" desc="This is a description of project 2" timeline="2023-2024" />
+          <Projects title="Project 3" desc="This is a description of project 3" timeline="2024-2025" />
+        </div>
+
+        <div style={{ height: "100vh" }}></div>
+
         <div style={{ filter: "invert(100%)", mixBlendMode: "difference", position: "fixed", bottom: "0", left: "0", margin: "10px", fontSize: "15px", color: "black", zIndex: "1", fontWeight: "lighter", lineHeight: "1em" }}><p>Oakland, CA</p> <p>2025</p> </div>
 
 
 
-
-        <HtmlCanvas tipColor={[1.0, 0.0, 0.0]} bodyColor={[0.0, 0.0, 0.0]} dist={75.0} scroll={0.1} />
-
-        <HtmlCanvas tipColor={[1.0, 0.0, 0.0]} bodyColor={[1.0, 1.0, 1.0]} dist={0.0} scroll={0.01} />
-        <h1 style={{ color: "black", filter: "invert(100%)", mixBlendMode: "difference" }}>Projects</h1>
 
       </div >
 
