@@ -31,7 +31,7 @@ function App() {
 
         </div>
 
-        <h1 style={{ filter: "invert(100%)", mixBlendMode: "difference", position: "fixed", bottom: "0", left: "0", margin: "10px", fontSize: "20px", color: "black", zIndex: "1", fontWeight: "lighter", writingMode: "vertical-rl" }}>Oakland, CA - @2025 </h1>
+        <h1 style={{ filter: "invert(100%)", mixBlendMode: "difference", position: "fixed", bottom: "0", left: "0", margin: "10px", fontSize: "10px", color: "black", zIndex: "1", fontWeight: "lighter", writingMode: "vertical-rl" }}>Oakland, CA - @2025 </h1>
 
 
 
