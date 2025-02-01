@@ -11,6 +11,8 @@ import './App.css'
 
 function App() {
 
+  const ref = useRef(null);
+
 
 
   return (
@@ -21,9 +23,9 @@ function App() {
         <Header />
         <div className="NameTag" style={{ width: "auto", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "left", zIndex: "1", filter: "invert(100%)", mixBlendMode: 'difference', color: "black" }}>
 
-          <h1 style={{ fontSize: "100px", margin: "0", padding: "0", backgroundColor: "black", color: "white", width: "fit-content" }}>Chase Nagle.</h1>
+          <h1 ref={ref} style={{ fontSize: "100px", margin: "0", padding: "0", backgroundColor: "black", color: "white", width: "fit-content" }}>Chase Nagle.</h1>
 
-          <p style={{}}>Java/TypeScript - C/C++ - Java - C# - Python - Go - Node.js - mongoDB - AWS - Open/WebGL - Vulkan</p>
+          <p style={{}}>Java/TypeScript - C/C++ - Java - C# - Python - Go - Node.js  - AWS - Open/WebGL</p>
 
         </div>
 
@@ -45,7 +47,7 @@ function App() {
 
         <div style={{ height: "70vh" }}></div>
 
-        <div style={{ filter: "invert(100%)", mixBlendMode: "difference", position: "fixed", bottom: "0", left: "0", margin: "10px", fontSize: "15px", color: "black", zIndex: "100", fontWeight: "bold", lineHeight: "1em" }}><p>Oakland, CA</p> <p>2025</p> </div>
+        <div style={{ filter: "invert(100%)", mixBlendMode: "difference", position: "fixed", bottom: "0", left: "0", padding: "30px", fontSize: "1em", color: "black", zIndex: "100", lineHeight: "0.5em" }}><p>Oakland, CA</p> <p>2025</p> </div>
 
 
 
