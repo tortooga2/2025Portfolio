@@ -60,9 +60,9 @@ float map(float value, float min1, float max1, float min2, float max2) {
 
       float grad = (1.0 - linearGradient(gl_FragCoord.y,  yDist));
       vec2 pos = vec2(gl_FragCoord.x, gl_FragCoord.y * 5.0);
-      float n1 = noise(vec3(gl_FragCoord.xy * 0.15 + vec2(0.0, time), time * 0.1));
-      float n2 = noise(vec3(gl_FragCoord.xy * 0.075 + vec2(0.0, time), time * 0.1));
-      float n3 = noise(vec3(gl_FragCoord.xy * 0.035 + vec2(0.0, time), time * 0.1));
+      float n1 = noise(vec3(gl_FragCoord.xy * 0.15 + vec2(0.0, time), time * 0.0));
+      float n2 = noise(vec3(gl_FragCoord.xy * 0.075 + vec2(0.0, time), time * 0.0));
+      float n3 = noise(vec3(gl_FragCoord.xy * 0.035 + vec2(0.0, time), time * 0.0));
 
 
       float fire = (n1 + n2 + n3) / 3.0;
