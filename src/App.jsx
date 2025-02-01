@@ -43,9 +43,9 @@ function App() {
           <Projects title="Project 3" desc="This is a description of project 3" timeline="2024-2025" />
         </div>
 
-        <div style={{ height: "100vh" }}></div>
+        <div style={{ height: "70vh" }}></div>
 
-        <div style={{ filter: "invert(100%)", mixBlendMode: "difference", position: "fixed", bottom: "0", left: "0", margin: "10px", fontSize: "15px", color: "black", zIndex: "1", fontWeight: "bold", lineHeight: "1em" }}><p>Oakland, CA</p> <p>2025</p> </div>
+        <div style={{ filter: "invert(100%)", mixBlendMode: "difference", position: "fixed", bottom: "0", left: "0", margin: "10px", fontSize: "15px", color: "black", zIndex: "100", fontWeight: "bold", lineHeight: "1em" }}><p>Oakland, CA</p> <p>2025</p> </div>
 
 
 
