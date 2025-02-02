@@ -6,7 +6,7 @@ import HtmlCanvas from './Components/htmlCanvas'
 import Projects from './Components/Item_Project'
 import VKContent from './Components/Content_VK'
 import OGLContent from './Components/Content_OGL'
-import PSimContent from './Components/Content_PSim'
+import PSimContent from './Components/Content_Psim'
 import WIPContent from './Components/Content_WIP'
 import './App.css'
 
