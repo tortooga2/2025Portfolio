@@ -2,11 +2,12 @@ const VKContent = () => {
 
   return (
     <div style={{ textAlign: "left", padding: "10px" }}>
-      <p>A reimplimentation of what my work with OpenGL. However, by using Vulkan I hope to have modern features available cross-platform like compute shaders (Unavailable on MacOS with OpenGL), and get a deeper understanding of moderns rendering systems. The goal is a framework where great looking 3D scenes is as easy as possible. </p>
+
+      <p>A reimplementation of my work with OpenGL. However, by using Vulkan, I hope to have modern features available cross-platform, like compute shaders (unavailable on macOS with OpenGL), and gain a deeper understanding of modern rendering systems. The goal is to create a framework where great-looking 3D scenes are as easy as possible to build.</p>
 
       <p>Tech Stack: C++, Vulkan, GLFW, GLM</p>
 
-      <p> Some cool things... </p>
+      <p>Some cool things...</p>
       <ul>
         <li>Vertex Buffer Manager: By deffering memory allocation, all mesh data can be allocated in a single, contiguous memory location. Also provides a simple abstraction.
           <pre style={{ textAlign: "left" }}>
