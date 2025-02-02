@@ -19,7 +19,7 @@ const VKContent = () => {
           </pre>
 
         </li >
-        <li>Uniform Buffer Manager
+        <li>Uniform Buffer Manager: Again, it uses a deffered system so that all memory is allocated in a single call. This not only improves the user experiance but also the performance of the program.
           <pre style={{ textAlign: "left" }}>
             UB.CreateLayout(vkInst-{">"}device, descriptorSetLayout, sizeof(UniformBufferObject)); <br />
             UB.CreatePipelineLayout(vkInst-{">"}device, vkInst-{">"}pipelineLayout); <br />
