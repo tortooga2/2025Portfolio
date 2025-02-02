@@ -29,8 +29,10 @@ const Header = () => {
   const [titleStyle, setTitleStyle] = useState({
     fontWeight: '400',
     fontSize: '1em',
-    padding: "20px",
-    margin: '0',
+    margin: '20px',
+    backgroundColor: 'black',
+    color: 'white',
+    width: 'fit-content',
   });
 
   const [navStyle, setNavStyle] = useState({

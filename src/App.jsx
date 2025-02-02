@@ -6,6 +6,8 @@ import HtmlCanvas from './Components/htmlCanvas'
 import Projects from './Components/Item_Project'
 import VKContent from './Components/Content_VK'
 import OGLContent from './Components/Content_OGL'
+import PSimContent from './Components/Content_PSim'
+import WIPContent from './Components/Content_WIP'
 import './App.css'
 
 
@@ -21,12 +23,14 @@ function App() {
   const project2Ref = useRef(null);
   const project3Ref = useRef(null);
   const project4Ref = useRef(null);
+  const project5Ref = useRef(null);
 
   const FoldAll = () => {
     project1Ref.current.Fold();
     project2Ref.current.Fold();
     project3Ref.current.Fold();
     project4Ref.current.Fold();
+    project5Ref.current.Fold();
 
   };
 
@@ -59,10 +63,10 @@ function App() {
 
           <Projects ref={project2Ref} title="OpenGL Render" desc="My entry into Engine Creation. Features Include: Mesh loading, shadow maps, and Material creation. Built with C++. " timeline="2024" Content={<OGLContent />} parentFunc={FoldAll} />
           <Projects ref={project1Ref} title="Vulkan Create Coding Framework" desc="A reimplimentation of what my work with OpenGL. The goal is easily create great looking 3D scenes. Built with C++. " timeline="2024-present" Content={<VKContent />} parentFunc={FoldAll} />
-          <Projects ref={project3Ref} title="ECS Particle System" desc="Built a custom Entity-Component and Physics System with springs, forces, and rigid bodies. Used p5.js to handle drawing. Built with Javascript. " timeline="2024" Content={<VKContent />} parentFunc={FoldAll} />
-          <Projects ref={project4Ref} title="Authentication Server" desc="Built a custom Authentication Server using JWT. Features include: User creation, login, and password reset and request processing. Built with Node.js and Express with SST to manage AWS. " timeline="2024" Content={<VKContent />} parentFunc={FoldAll} />
-          <Projects title="Particle Life" desc="An exploration into the emergent behavior simulation by Artist Jeffery Ventrella. Built with C++ in openFrameworks. " timeline="2023" Content={<VKContent />} parentFunc={FoldAll} />
-          <Projects title="Chat App" desc="Built a Chat App with WebSockets. Built with Node.js and Express with html/javascript for front end. " timeline="2023" Content={<VKContent />} parentFunc={FoldAll} />
+          <Projects ref={project3Ref} title="ECS Particle System" desc="Built a custom Entity-Component and Physics System with springs, forces, and rigid bodies. Used p5.js to handle drawing. Built with Javascript. " timeline="2024" Content={<PSimContent />} parentFunc={FoldAll} />
+          <Projects ref={project4Ref} title="Authentication Server" desc="Built a custom Authentication Server using JWT. Features include: User creation, login, and password reset and request processing. Built with Node.js and Express with SST to manage AWS. " timeline="2024" Content={<WIPContent link={"https://github.com/tortooga2/Authentication_Example"} />} parentFunc={FoldAll} />
+          <Projects ref={project5Ref} title="Particle Life" desc="An exploration into the emergent behavior simulation by Artist Jeffery Ventrella. Built with C++ in openFrameworks. " timeline="2023" Content={<WIPContent link={"https://github.com/tortooga2/Particle-Life"} />} parentFunc={FoldAll} />
+
         </div>
 
         <div style={{ height: "70vh" }}></div>

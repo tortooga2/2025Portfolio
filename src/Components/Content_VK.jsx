@@ -1,7 +1,7 @@
 const VKContent = () => {
 
   return (
-    <div style={{ textAlign: "left" }}>
+    <div style={{ textAlign: "left", padding: "10px" }}>
       <p>A reimplimentation of what my work with OpenGL. However, by using Vulkan I hope to have modern features available cross-platform like compute shaders (Unavailable on MacOS with OpenGL), and get a deeper understanding of moderns rendering systems. The goal is a framework where great looking 3D scenes is as easy as possible. </p>
 
       <p>Tech Stack: C++, Vulkan, GLFW, GLM</p>
