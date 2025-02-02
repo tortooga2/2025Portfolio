@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import propTypes from 'prop-types';
 
-const HtmlCanvas = ({ tipColor, bodyColor, dist, scroll, zIndex }) => {
+const HtmlCanvas = ({ tipColor, bodyColor, dist, scroll, zIndex, maxHeight }) => {
   const canvasRef = useRef(null);
 
   const vertShader = `
@@ -162,9 +162,17 @@ float map(float value, float min1, float max1, float min2, float max2) {
       webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'time'), time.current);
       webGLCavnas.uniform3fv(webGLCavnas.getUniformLocation(program, 'tipColor'), tipColor);
       webGLCavnas.uniform3fv(webGLCavnas.getUniformLocation(program, 'bodyColor'), bodyColor);
-      if (yDist.current > 0.0) { webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'yDist'), yDist.current); } else {
+      if (yDist.current > 0.0) {
+        if (yDist.current > maxHeight) {
+          webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'yDist'), maxHeight);
+        } else {
+          webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'yDist'), yDist.current);
+        }
+      }
+      else {
         webGLCavnas.uniform1f(webGLCavnas.getUniformLocation(program, 'yDist'), 0.0);
       }
+
       webGLCavnas.drawArrays(webGLCavnas.TRIANGLE_FAN, 0, 4);
       requestAnimationFrame(renderLoop);
     }
@@ -201,7 +209,8 @@ HtmlCanvas.propTypes = {
   scroll: propTypes.number,
   tipColor: propTypes.array,
   bodyColor: propTypes.array,
-  zIndex: propTypes.number
+  zIndex: propTypes.number,
+  maxHeight: propTypes.number,
 };
 
 

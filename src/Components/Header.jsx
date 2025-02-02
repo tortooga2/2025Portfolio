@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 
 
 import './Header.css'
-import NavItem from './NavItem'
+import NavItem from './Item_Nav'
 
 const Header = () => {
   const headerRef = useRef(null);
