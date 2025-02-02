@@ -2,7 +2,9 @@ const VKContent = () => {
 
   return (
     <div style={{ textAlign: "left" }}>
-      <p>A reimplimentation of what my work with OpenGL. However, by using Vulkan I, not only hope to have modern features available cross-platform likecomputer shaders (Unavailable on MacOS), but also to get a deeper understanding of CPU-GPU interfaces. The goal is easily create great looking 3D scenes. Built with C++.  </p>
+      <p>A reimplimentation of what my work with OpenGL. However, by using Vulkan I hope to have modern features available cross-platform like compute shaders (Unavailable on MacOS with OpenGL), and get a deeper understanding of moderns rendering systems. The goal is a framework where great looking 3D scenes is as easy as possible. </p>
+
+      <p>Tech Stack: C++, Vulkan, GLFW, GLM</p>
 
       <p> Some cool things... </p>
       <ul>
