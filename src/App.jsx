@@ -69,7 +69,7 @@ function App() {
 
         </div>
 
-        <div style={{ height: "70vh" }}></div>
+        <div style={{ height: "50vh" }}></div>
 
         <div style={{ filter: "invert(100%)", mixBlendMode: "difference", position: "fixed", bottom: "0", left: "0", padding: "30px", fontSize: "1em", color: "black", zIndex: "100", lineHeight: "0.5em" }}><p>Oakland, CA</p> <p>2025</p> </div>
 
